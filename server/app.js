@@ -15,9 +15,15 @@ const sequelize = require('./shared/database');
 
 // Importation des modèles de la BDD définis dans d'autres fichiers. Ils représentent les tables de la BDD.
 const User = require('./models/userModel');
+const Product = require('./models/productModel');
+const Cart = require('./models/cartModel');
 
 
 
+// Définition et configuration des routes
+app.use('/users', require('./routes/users'));
+app.use('/carts', require('./routes/carts'));
+app.use('/products', require('./routes/products'));
 
 // Synchronisation des modèles avec la base de données et démarrage du serveur :
 // On s'assure de synchroniser nos modèles avec la base de données après avoir défini ces relations, en utilisant

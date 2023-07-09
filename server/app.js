@@ -17,8 +17,48 @@ const sequelize = require('./shared/database');
 const User = require('./models/userModel');
 const Product = require('./models/productModel');
 const Cart = require('./models/cartModel');
+const CartItem = require('./models/cartItemModel');
 
+// Initialisation de l'application Express :
+// Cela crée une nouvelle application Express, qu'on va utiliser pour configurer le serveur.
+const app = express();
 
+// Utilisation de middleware (bodyParser)
+// "app.use" est une méthode pour configurer le middleware pour l'application. On utilise body-parser.json(), qui va :
+// Analyse les corps des requêtes entrantes en JSON.
+app.use(bodyParser.json());
+
+// Définition des associations de modèles :
+// Avec ces relations définies, Sequelize saura comment joindre les tables appropriées lors de la réalisation de requêtes
+// sur ces modèles.
+
+// Afin que le modèle "Cart" soit associé à "User", on appelle sequelize.sync()) en utilisant les méthodes "hasMany"
+// et "belongsTo" de Sequelize ils définissent les relations entre les modèles.
+// Cette configuration indique qu'un "User" peut avoir plusieurs "Cart" (un utilisateur peut avoir plusieurs paniers),
+// et chaque "Cart" appartient à un "User" (chaque panier appartient à un utilisateur).
+
+// User.hasMany(Cart, { foreignKey: 'userId' }) signifie qu'un utilisateur peut avoir plusieurs paniers,
+User.hasMany(Cart, { foreignKey: 'userId' });
+
+// et Cart.belongsTo(User, { foreignKey: 'userId' }) signifie qu'un panier appartient à un utilisateur.
+Cart.belongsTo(User, { foreignKey: 'userId' });
+
+// On a aussi cette association entre le modèle "Cart" et CartItem où :
+// Un "Cart" peut avoir plusieurs "CartItem", et chaque "CartItem" appartient à un "Cart" et aussi à un "Product".
+
+// Si on veut obtenir tous les CartItem pour un "Cart" particulier, Sequelize saura qu'il doit :
+// rechercher les "CartItem" qui ont un "cartId" correspondant à l'id du "Cart".
+
+// Un Cart peut avoir plusieurs CartItem
+Cart.hasMany(CartItem, { foreignKey: 'cartId' });
+
+// Chaque CartItem appartient à un Cart
+CartItem.belongsTo(Cart, { foreignKey: 'cartId' });
+
+// Chaque CartItem appartient à un Product
+CartItem.belongsTo(Product, { foreignKey: 'productId' });
+
+// Plus d'associations si nécessaire...
 
 // Définition et configuration des routes
 app.use('/users', require('./routes/users'));

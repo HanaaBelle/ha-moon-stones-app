@@ -18,6 +18,8 @@ const User = require('./models/userModel');
 const Product = require('./models/productModel');
 const Cart = require('./models/cartModel');
 const CartItem = require('./models/cartItemModel');
+const Order = require('./models/orderModel.js');
+const OrderItem = require('./models/orderItemModel.js');
 
 // Initialisation de l'application Express :
 // Cela crée une nouvelle application Express, qu'on va utiliser pour configurer le serveur.
@@ -58,16 +60,33 @@ CartItem.belongsTo(Cart, { foreignKey: 'cartId' });
 // Chaque CartItem appartient à un Product
 CartItem.belongsTo(Product, { foreignKey: 'productId' });
 
-// Plus d'associations si nécessaire...
+// Un utilisateur peut avoir plusieurs commandes
+User.hasMany(Order, { foreignKey: 'userId' });
+
+// Chaque commande appartient à un utilisateur
+Order.belongsTo(User, { foreignKey: 'userId' });
+
+// Une commande peut avoir plusieurs éléments
+Order.hasMany(OrderItem, { foreignKey: 'orderId' });
+
+// Chaque OrderItem de commande appartient à une commande
+OrderItem.belongsTo(Order, { foreignKey: 'orderId' });
+
+// Chaque OrderItem de commande appartient à un produit
+OrderItem.belongsTo(Product, { foreignKey: 'productId' });
+
+// Ajout de plus d'associations si nécessaire...
 
 // Définition et configuration des routes
-app.use('/users', require('./routes/users'));
-app.use('/carts', require('./routes/carts'));
-app.use('/products', require('./routes/products'));
+app.use('/users', require('./routes/userRoute'));
+app.use('/carts', require('./routes/cartRoute'));
+app.use('/products', require('./routes/productRoute'));
 
-// Synchronisation des modèles avec la base de données et démarrage du serveur :
-// On s'assure de synchroniser nos modèles avec la base de données après avoir défini ces relations, en utilisant
-// sequelize.sync()
+// Remarque : les champs userId, orderId et productId sont utilisés comme clés étrangères pour établir les relations
+// entre les tables. Il ne faut toujours s'assurer de synchroniser nos modèles avec la BDD après avoir défini ces
+// relations, en utilisant sequelize.sync()
+
+// Synchronisation des modèles avec la BDD et démarrage du serveur
 sequelize.sync()
     .then(result => {
         app.listen(3000, () => console.log('server is running on port 3000'));

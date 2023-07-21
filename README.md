@@ -1,7 +1,7 @@
 ## Projet : Ha_Moon_Stones_App 
 
 Site de vente de bijoux en pierre avec (react vite, tailwind pour le frontend et code.js, express en backend 
-et coté base de données mysql et sequelize.
+et coté base de données sqlite et sequelize.
 Avec gestion de :
 
 * Panier
@@ -14,7 +14,7 @@ Avant tout, je m'assure d'avoir Node.js et npm (Node Package Manager) installés
 
 ### 1. Configuration de l'environnement de développement
 
-Je commence par créer un nouveau projet Vite en utilisant npx:
+Je commence par créer un nouveau projet Vite en utilisant npx :
 
 `npx create-vite mon-site --template react-ts
 cd mon-site
@@ -46,7 +46,7 @@ Le projet a cette structure de dossiers :
     * Admin
     * Login
     * Signup
-  * App.js
+  * App.jsx
   * index.js
 * server (Node.js/Express)
   * models
@@ -94,9 +94,26 @@ Dans le dossier "models" définir :
 * Order : pour stocker les informations sur les commandes passées.
 * OrderItem : pour stocker les informations sur les articles spécifiques contenus dans une commande.
 
+> Remarque importante :
+On a un dossier models où se trouve notre fichier "userModel.js", et un fichier database.js dans le dossier parent,
+comme suit :
+// /my-app(Sserver)
+// │
+// ├── /models
+// │   └── userModel.js
+// │
+// └── /shared
+//     └── database.js
+Dans ce cas, ..//shared/database dans "userModel.js" fait référence à database.js dans le dossier parent.
+La fonction require charge le module "database.js", permettant à "userModel.js" d'utiliser l'instance sequelize
+configurée dans ce module. Si le fichier "database.js" se trouvait ailleurs, on devrait modifier le chemin
+en conséquence. Si "database.js" est dans le même dossier que "userModel.js", on utiliserait simplement
+require('./database'). Le point important est que ce chemin doit pointer vers le fichier qui exporte l'instance
+de Sequelize qu'on avait configurée pour l'application.
+
 ### 4. Utilisation des modèles 
-Une fois qu'on a défini nos modèles, on peut les utiliser pour interagir avec la BDD. Par exemple, pour créer un nouvel 
-utilisateur, ou un nouveau produit voir "userController.js" et "productController.js"
+Une fois qu'on a défini nos modèles, on peut les utiliser pour interagir avec la BDD.
+Par exemple, pour créer un nouvel utilisateur, ou un nouveau produit voir "userController.js" et "productController.js"
 
 > Remarque : il faut que le modèle Cart soit associé à User dans le fichier d'initialisation principal que ce soit :
 > "app.js" (voir le fichier app.js)

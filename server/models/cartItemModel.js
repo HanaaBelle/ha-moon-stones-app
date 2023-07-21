@@ -14,9 +14,28 @@ const CartItem = sequelize.define('cartItem', {
         primaryKey: true
     },
     quantity: Sequelize.INTEGER,
-
-    cartId: Sequelize.INTEGER,
-    productId: Sequelize.INTEGER
+    // cartId (la clé étrangère du modèle Cart) : Dans ce cas, cartId est une clé étrangère qui fait référence à
+    // la table carts (par défaut, Sequelize utilise le nom du modèle au pluriel et en minuscules pour le nom de
+    // la table), et la clé id de cette table.
+    cartId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            // Le nom de la table 'cart' en minuscules et au pluriel
+            model: 'carts',
+            key: 'id'
+        }
+    },
+    // pareil pour productId (la clé étrangère du modèle Product)
+    productId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            // Le nom de la table 'product' en minuscules et au pluriel
+            model: 'products',
+            key: 'id'
+        }
+    }
 });
 
 module.exports = CartItem;

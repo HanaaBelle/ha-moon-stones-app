@@ -1,7 +1,7 @@
 // cartModel.js : pour stocker les informations sur les paniers d'achat des utilisateurs.
 
 // La création de modèles supplémentaires, tels que le modèle Cart ou d'autres, suit la même structure que le modèle
-// User et product précédemment définis. On définira simplement les champs nécessaire pour ces tables dans la BDD.
+// User et product précédemment définis. On définira simplement les champs nécessaires pour ces tables dans la BDD.
 
 const Sequelize = require('sequelize');
 const sequelize = require('../shared/database');
@@ -34,7 +34,5 @@ const Cart = sequelize.define('cart', {
         defaultValue: Sequelize.NOW
     }
 });
-
-//
 
 module.exports = Cart;

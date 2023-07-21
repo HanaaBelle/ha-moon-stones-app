@@ -1,4 +1,4 @@
-// productModel.js : pour stocker les informations sur les bijoux que je vends.
+// productModel.js : pour stocker les informations sur les bijoux que nous vendons.
 // C'est pareil que dans le fichier "userModel.js"
 
 const Sequelize = require('sequelize');

@@ -1,6 +1,6 @@
 // cartItemModel.js : pour stocker les informations sur les articles spécifiques contenus dans un panier d'achat.
 // On doit ajouter des champs appropriés à nos modèles pour stocker les clés étrangères.
-// Notre modèle "CartItem" devrait inclure un "cartId" et un "productId".
+// Notre modèle "CartItem" devrait inclure un "cartId" et un "jewelryId".
 
 const Sequelize = require('sequelize');
 const sequelize = require('../shared/database');
@@ -26,13 +26,13 @@ const CartItem = sequelize.define('cartItem', {
             key: 'id'
         }
     },
-    // pareil pour productId (la clé étrangère du modèle Product)
-    productId: {
+    // pareil pour productId (la clé étrangère du modèle jewelry)
+    jewelryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            // Le nom de la table 'product' en minuscules et au pluriel
-            model: 'products',
+            // Le nom de la table 'jewelry' en minuscules et au pluriel
+            model: 'jewelries',
             key: 'id'
         }
     }

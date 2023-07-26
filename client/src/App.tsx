@@ -10,9 +10,9 @@ import AdminPage from "../pages/AdminPage";
 // @ts-ignore
 import LoginSignupPage from "./pages/LoginSignupPage"
 // @ts-ignore
-import ProductsPage from '../pages/ProductsPage';
+import JewelriesPage from '../pages/JewelriesPage';
 // @ts-ignore
-import SingleProductPage from '../pages/SingleProductPage';
+import SingleJewelryPage from '../pages/SingleJewelryPage';
 // @ts-ignore
 import CartPage from '../pages/CartPage';
 
@@ -27,8 +27,8 @@ function App() {
                 <Route path='*' element={<HomePage/>} />
                 <Route path='/admin' element={<AdminPage/>}/>
                 <Route path='/login' element={<LoginSignupPage/>} />
-                <Route path='/furnitures' element={<ProductsPage/>} />
-                <Route path='/singlefurniture' element={<SingleProductPage/>} />
+                <Route path='/furnitures' element={<JewelriesPage/>} />
+                <Route path='/singlefurniture' element={<SingleJewelryPage/>} />
                 <Route path='/cart' element={<CartPage/>} />
 
             </Routes>

@@ -40,12 +40,12 @@ Le projet a cette structure de dossiers :
 * client (React)
   * components
   * pages
-    * Home
-    * Product
-    * Cart
-    * Admin
-    * Login
-    * Signup
+    * HomePage
+    * JewelriesPage
+    * CartPage
+    * AdminPage
+    * LoginSignupPage
+    * SingleJewelryPage
   * App.jsx
   * index.js
 * server (Node.js/Express)
@@ -81,14 +81,14 @@ Création d'un nouveau fichier database.js dans mon dossier de projet (voir le f
 #### 3.3 Création de la base de données 
 
 Par exemple, pour un utilisateur et un produit, on peut créer deux fichiers dans le dossier "models".
-(voir les fichiers "userModel.js" et "productModel.js"))
+(voir les fichiers "userModel.js" et "jewelryModel.js"))
 
 #### 3.4 Définition des modèles 
 
 Dans le dossier "models" définir :
 
 * User : pour stocker les informations sur les utilisateurs.
-* Product : pour stocker les informations sur les bijoux que je vends.
+* Jewelry : pour stocker les informations sur les bijoux que je vends.
 * Cart : pour stocker les informations sur les paniers d'achat des utilisateurs.
 * CartItem : pour stocker les informations sur les articles spécifiques contenus dans un panier d'achat.
 * Order : pour stocker les informations sur les commandes passées.
@@ -113,7 +113,7 @@ de Sequelize qu'on avait configurée pour l'application.
 
 ### 4. Utilisation des modèles 
 Une fois qu'on a défini nos modèles, on peut les utiliser pour interagir avec la BDD.
-Par exemple, pour créer un nouvel utilisateur, ou un nouveau produit voir "userController.js" et "productController.js"
+Par exemple, pour créer un nouvel utilisateur, ou un nouveau produit voir "userController.js" et "jewelryController.js"
 
 > Remarque : il faut que le modèle Cart soit associé à User dans le fichier d'initialisation principal que ce soit :
 > "app.js" (voir le fichier app.js)

@@ -26,13 +26,13 @@ const OrderItem = sequelize.define('orderItem', {
             key: 'id'
         }
     },
-    // Identifiant du produit commandé : productId (la clé étrangère du modèle Product)
-    productId: {
+    // Identifiant du produit commandé : productId (la clé étrangère du modèle jewelry)
+    jewelryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
             // Le nom de la table 'product' en minuscules et au pluriel
-            model: 'products',
+            model: 'jewelries',
             key: 'id'
         }
     }

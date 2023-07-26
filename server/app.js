@@ -15,7 +15,7 @@ const sequelize = require('./shared/database');
 
 // Importation des modèles de la BDD définis dans d'autres fichiers. Ils représentent les tables de la BDD.
 const User = require('./models/userModel');
-const Product = require('./models/productModel');
+const Jewelry = require('./models/jewelryModel.js');
 const Cart = require('./models/cartModel');
 const CartItem = require('./models/cartItemModel');
 const Order = require('./models/orderModel.js');
@@ -46,7 +46,7 @@ User.hasMany(Cart, { foreignKey: 'userId' });
 Cart.belongsTo(User, { foreignKey: 'userId' });
 
 // On a aussi cette association entre le modèle "Cart" et CartItem où :
-// Un "Cart" peut avoir plusieurs "CartItem", et chaque "CartItem" appartient à un "Cart" et aussi à un "Product".
+// Un "Cart" peut avoir plusieurs "CartItem", et chaque "CartItem" appartient à un "Cart" et aussi à un "Jewelry".
 
 // Si on veut obtenir tous les CartItem pour un "Cart" particulier, Sequelize saura qu'il doit :
 // rechercher les "CartItem" qui ont un "cartId" correspondant à l'id du "Cart".
@@ -57,8 +57,8 @@ Cart.hasMany(CartItem, { foreignKey: 'cartId' });
 // Chaque CartItem appartient à un Cart
 CartItem.belongsTo(Cart, { foreignKey: 'cartId' });
 
-// Chaque CartItem appartient à un Product
-CartItem.belongsTo(Product, { foreignKey: 'productId' });
+// Chaque CartItem appartient à un Jewelry
+CartItem.belongsTo(Jewelry, { foreignKey: 'jewelryId' });
 
 // Un utilisateur peut avoir plusieurs commandes
 User.hasMany(Order, { foreignKey: 'userId' });
@@ -72,17 +72,17 @@ Order.hasMany(OrderItem, { foreignKey: 'orderId' });
 // Chaque OrderItem de commande appartient à une commande
 OrderItem.belongsTo(Order, { foreignKey: 'orderId' });
 
-// Chaque OrderItem de commande appartient à un produit
-OrderItem.belongsTo(Product, { foreignKey: 'productId' });
+// Chaque OrderItem de commande appartient à un bijou
+OrderItem.belongsTo(Jewelry, { foreignKey: 'jewelryId' });
 
 // Ajout de plus d'associations si nécessaire...
 
 // Définition et configuration des routes
-app.use('/users', require('./routes/userRoute'));
-app.use('/carts', require('./routes/cartRoute'));
-app.use('/products', require('./routes/productRoute'));
+app.use('/users', require('./routes/userRoute.js'));
+app.use('/carts', require('./routes/cartRoute.js'));
+app.use('/jewelries', require('./routes/jewelryRoute.js'));
 
-// Remarque : les champs userId, orderId et productId sont utilisés comme clés étrangères pour établir les relations
+// Remarque : les champs userId, orderId et jewelryId sont utilisés comme clés étrangères pour établir les relations
 // entre les tables. Il ne faut toujours s'assurer de synchroniser nos modèles avec la BDD après avoir défini ces
 // relations, en utilisant sequelize.sync()
 

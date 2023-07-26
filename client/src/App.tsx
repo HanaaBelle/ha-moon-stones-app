@@ -26,9 +26,9 @@ function App() {
                 <Route path='/' element={<HomePage/>} />
                 <Route path='*' element={<HomePage/>} />
                 <Route path='/admin' element={<AdminPage/>}/>
-                <Route path='/login' element={<LoginSignupPage/>} />
-                <Route path='/furnitures' element={<JewelriesPage/>} />
-                <Route path='/singlefurniture' element={<SingleJewelryPage/>} />
+                <Route path='/loginSignup' element={<LoginSignupPage/>} />
+                <Route path='/jewelries' element={<JewelriesPage/>} />
+                <Route path='/singleJewelry' element={<SingleJewelryPage/>} />
                 <Route path='/cart' element={<CartPage/>} />
 
             </Routes>

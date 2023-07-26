@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Filterbar = () => {
+const FilterBar = () => {
     return (
         <div>
             <ul className='flex'>
@@ -14,4 +14,4 @@ const Filterbar = () => {
     );
 };
 
-export default Filterbar;
+export default FilterBar;

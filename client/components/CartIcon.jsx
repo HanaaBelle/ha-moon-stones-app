@@ -1,7 +1,7 @@
 import React from 'react';
-import { BsFillCartFill } from 'react-icons/bs';
+import {BsFillCartFill} from 'react-icons/bs';
 
-const Carticon = () => {
+const CartIcon = () => {
     return (
         <div className='px-4'>
             <BsFillCartFill size='1.5rem'/>
@@ -9,4 +9,4 @@ const Carticon = () => {
     );
 };
 
-export default Carticon;
+export default CartIcon;

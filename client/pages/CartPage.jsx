@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Backicon from '../components/Backicon';
+import Backicon from '../components/BackIcon.jsx';
 
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Cartpage = () => {
     return (

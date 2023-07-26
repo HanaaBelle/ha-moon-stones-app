@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, {useState} from 'react';
 import {AiFillLeftCircle} from 'react-icons/Ai';
 import {AiFillRightCircle} from 'react-icons/Ai'
 
@@ -10,7 +9,7 @@ const Carousel = ({slides}) => {
 
     //Fonction qui permet à la flèche gauche d'afficher la photo précédente
     const goToPrevious = () => {
-        const isFirstSlide = currentIndex ===0
+        const isFirstSlide = currentIndex === 0
         const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     }
@@ -29,12 +28,15 @@ const Carousel = ({slides}) => {
 
     return (
         <div className='white  rounded-xl m-5 p-5 flex-auto'>
-            <p className='absolute z-50 text-black top-72 left-6 cursor-pointer text-5xl opacity-50' onClick={goToPrevious}><AiFillLeftCircle/></p>
-            <p className='absolute z-50 text-black top-72 right-6 cursor-pointer text-5xl opacity-50' onClick={goToNext}><AiFillRightCircle/></p>
-            <img src={slides[currentIndex].url} alt="fauteuil pioupiou" className='rounded-3xl h-96 relative' />
+            <p className='absolute z-50 text-black top-72 left-6 cursor-pointer text-5xl opacity-50'
+               onClick={goToPrevious}><AiFillLeftCircle/></p>
+            <p className='absolute z-50 text-black top-72 right-6 cursor-pointer text-5xl opacity-50'
+               onClick={goToNext}><AiFillRightCircle/></p>
+            <img src={slides[currentIndex].url} alt="fauteuil pioupiou" className='rounded-3xl h-96 relative'/>
             <div className='flex justify-center'>
-                {slides.map((slide, slideIndex) =>(
-                    <div key={slideIndex} className='m-1 cursor-pointer text-3xl' onClick={()=>goToSlide(slideIndex)}>•</div>
+                {slides.map((slide, slideIndex) => (
+                    <div key={slideIndex} className='m-1 cursor-pointer text-3xl'
+                         onClick={() => goToSlide(slideIndex)}>•</div>
                 ))}
             </div>
         </div>

@@ -1,16 +1,14 @@
 import React from 'react';
 
-const Addtocartbutton = () => {
+const FavoritButton = () => {
     return (
         <div className="m-3">
             <button className='block bg-gray-100 hover:bg-gray-200 text-white w-full py-2 px-4 rounded-3xl'>
-            <span className='text-blue-700 cursor-pointer'>
-            Ajouter ✅
+            <span className='text-blue-200 cursor-pointer'>🌟
             </span>
-                
             </button>
         </div>
     );
 };
 
-export default Addtocartbutton;
+export default FavoritButton;

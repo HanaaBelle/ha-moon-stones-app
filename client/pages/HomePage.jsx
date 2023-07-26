@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import Imagebanner from '../components/Imagebanner';
+import ImageBanner from '../components/ImageBanner.jsx';
 import Footer from '../components/Footer';
 
 const Homepage = () => {
@@ -9,7 +9,7 @@ const Homepage = () => {
         <div>
             <Header/>
             <Hero/>
-            <Imagebanner/>
+            <ImageBanner/>
             <Footer/>
         </div>
     );

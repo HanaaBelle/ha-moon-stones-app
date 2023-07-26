@@ -2,12 +2,12 @@ import React from 'react';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Loginform from '../components/Loginform';
+import LoginForm from '../components/LoginForm.jsx';
 import Loginbg from '../assets/loginbg.jpg';
-import Subscriptionform from '../components/Subscriptionform';
-import Backicon from '../components/Backicon';
+import SignupForm from '../components/SignupForm.jsx';
+import Backicon from '../components/BackIcon.jsx';
 
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 const LoginSignuppage = () => {
@@ -24,7 +24,7 @@ const LoginSignuppage = () => {
                                     <h2 className="text-3xl font-medium">Register</h2>
                                     <p>Create your account. It's free and only take a minute</p>
                                 </div>
-                                <Subscriptionform />
+                                <SignupForm/>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ const LoginSignuppage = () => {
                                     <h2 className="text-3xl font-medium">Welcome Back!</h2>
                                     <p>Please enter your credentials to Sign In</p>
                                 </div>
-                                <Loginform />
+                                <LoginForm/>
                             </div>
                         </div>
                     </div>

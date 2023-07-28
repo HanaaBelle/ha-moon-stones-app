@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
+import Header from '../components/Header.jsx';
+import Hero from '../components/Hero.jsx';
 import ImageBanner from '../components/ImageBanner.jsx';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer.jsx';
 
 const Homepage = () => {
     return (

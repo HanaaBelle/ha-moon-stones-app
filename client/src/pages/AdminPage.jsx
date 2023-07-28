@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import Backicon from "../components/BackIcon.jsx";
 import DashBoard from "../components/dashBoard.jsx";
 import "../adminPage.css";
 
 import {NavLink} from "react-router-dom";
 
-const Adminpage = () => {
+const AdminPage = () => {
     return (
         <div className="page">
             <Header/>
@@ -23,4 +23,5 @@ const Adminpage = () => {
     );
 };
 
-export default Adminpage;
+export default AdminPage;
+

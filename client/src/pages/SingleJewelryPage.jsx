@@ -1,21 +1,25 @@
 import React from 'react';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Amethyst from '../public/images/Amethyst.jpg';
-//import Bracelet1 from '../public/images/Bracelet1.jpg';
-//import Bracelet2 from '../public/images/Bracelet2.jpg';
-import Carousel from '../components/Carousel';
+import Carousel from '../components/Carousel.jsx';
 
-import {NavLink} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import Backicon from '../components/BackIcon.jsx';
+
+import cardList from "./data.js";
 
 const SingleJewelryPage = () => {
 
+    const {id} = useParams();
+    const jewelry = cardList.find(card => card.id === Number(id));
+
+    if (!jewelry) {
+        return <p>Bijou non trouvé</p>;  // Ou tout autre message d'erreur que vous voulez montrer
+    }
+
     const slides = [
-        {title: 'Améthyste', url: `${Amethyst}`},
-        //{title: 'Bracelet1', url: `${Bracelet1}`},
-        //{title: 'Bracelet2', url: `${Bracelet2}`},
+        {title: jewelry.title, url: jewelry.img},
     ]
 
     return (
@@ -45,12 +49,12 @@ const SingleJewelryPage = () => {
                                     (...)
                                 </p>
                                 {/* <br /> */}
-                                <div className="text-gray-900 font-bold text-xl mb-2">Bracelet en Améthyste</div>
+                                <div className="text-gray-900 font-bold text-xl mb-2">Bracelet en {jewelry.title}</div>
                                 <p className="text-gray-700 text-base">
-                                    Joli bracelet en améthyste de couleurs violette et mauve...</p>
+                                    {jewelry.description}</p>
                                 <div className="flex items-center">
                                     <div className="text-sm">
-                                        <p className="text-gray-900 leading-none">Prix</p>
+                                        <p className="text-gray-900 leading-none">{jewelry.price}</p>
                                         <p className="text-gray-600">Date de publication</p>
                                     </div>
                                 </div>
@@ -60,7 +64,7 @@ const SingleJewelryPage = () => {
                 </div>
             </div>
 
-            <NavLink to='/furnitures'><Backicon/></NavLink>
+            <NavLink to='/jewelriesPage'><Backicon/></NavLink>
             <Footer/>
         </div>
     );

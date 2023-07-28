@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 import LoginForm from '../components/LoginForm.jsx';
 import Loginbg from '../assets/loginbg.jpg';
 import SignupForm from '../components/SignupForm.jsx';

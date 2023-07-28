@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header.jsx';
 import FilterBar from '../components/FilterBar.jsx';
 import JewelryCard from '../components/JewelryCard.jsx';
 import ScrollToTop from "react-scroll-to-top";
-import Footer from '../components/Footer';
+import Footer from '../components/Footer.jsx';
 import Backicon from '../components/BackIcon.jsx';
 
 import {NavLink} from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 
-let apiUrl = 'http://localhost:5173/api/users/login'
+let apiUrl = 'http://localhost:5174/api/users/login'
 
 const LoginForm = () => {
 
@@ -38,7 +38,7 @@ const LoginForm = () => {
         <div>
             <form onSubmit={getToken}>
                 <div className='mb-3'>
-                    <img src="../src/assets/loginlogo.png" alt="Profile picture" className='rounded-t-3xl'/>
+                    <img src="../assets/loginlogo.png" alt="Profile picture" className='rounded-t-3xl'/>
                 </div>
                 <div className='mb-3'>
                     <label className='font-mediu mb-2 flex'>Email </label>

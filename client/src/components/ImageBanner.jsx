@@ -1,7 +1,8 @@
 import React from 'react';
-import Thumbnail from './Thumbnail';
+import Thumbnail from './Thumbnail.jsx';
 import cardList from '../pages/data.js';
 import {MdChevronLeft, MdChevronRight} from 'react-icons/md';
+import {NavLink} from "react-router-dom";
 
 const ImageBanner = () => {
 
@@ -18,18 +19,20 @@ const ImageBanner = () => {
 
     return (
 
-        <div className='bg-gray-200 p-2 justify-center relative flex items-center'>
+        <div className='bg-blue-200 p-2 justify-center relative flex items-center'>
 
             <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100'
                            onClick={slideLeft} size={150}
             />
             <div
                 id='slider'
-                className='w-full h-full overflow-x-scroll scroll mb-5 px-5 p-2 bg-slate-300 rounded-3xl shadow-lg
+                className='w-full h-full overflow-x-scroll scroll mb-5 px-7 p-2 bg-orange-100 rounded-2xl shadow-lg
                 whitespace-nowrap scroll-smooth scrollbar-hide'
             >
                 {cardList.map((card, index) => (
-                    <Thumbnail key={index} card={card}/>
+                    <NavLink to={`/singleJewelry/${card.id}`} key={card.id}>
+                        <Thumbnail key={index} card={card}/>
+                    </NavLink>
                 ))}
             </div>
 

@@ -4,7 +4,7 @@ import {BsFillCartFill} from 'react-icons/bs';
 const CartIcon = () => {
     return (
         <div className='px-4'>
-            <BsFillCartFill size='1.5rem'/>
+            <BsFillCartFill size='2.5rem'/>
         </div>
     );
 };
